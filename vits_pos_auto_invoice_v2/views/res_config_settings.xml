@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<odoo>
+    <record id="view_pos_cart_cleaner_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.pos_sale</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='restaurant_section']" position="after">
+                <block title="POS Auto Invoice Generate">
+                    <setting string="Enable Auto Invoice Generate"
+                             help="If enabled, all POS orders will automatically generate invoices upon payment.
+                             If disabled, no invoices will be created from the POS.">
+                        <field name="pos_auto_invoice_enable"/>
+                    </setting>
+                    <setting string="Disable Auto Invoice PDF Download" invisible="pos_auto_invoice_enable != True"
+                             help="If enabled, the invoice will be created but its invoice PDF will not be automatically downloaded.
+                            Disable this to allow automatic PDF downloads after payment.">
+                        <field name="pos_skip_invoice_pdf_download"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

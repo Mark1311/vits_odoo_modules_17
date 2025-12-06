@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<odoo>
+    <record id="vits_pos_hide_refund_button_view" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.pos_order_type</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='restaurant_section']" position="after">
+                <block title="POS Refund Button Visibility">
+                    <setting string="Hide POS Refund Button"
+                             help="Enable this option to hide the Refund button on the POS interface for a cleaner and controlled workflow.">
+                        <field name="hide_refund_button"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

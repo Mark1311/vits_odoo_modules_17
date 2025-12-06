@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<templates id="vits_pos_hide_product_info_advance.inherit_product_info_banner" xml:space="preserve">
+    <t t-name="vits_pos_hide_product_info_advance.product_hide_info_banner"
+       t-inherit="point_of_sale.ProductInfoBanner"
+       t-inherit-mode="extension" owl="1">
+    <!--        Hide Header-->
+        <xpath expr="//div[@class='d-flex']" position="replace">
+            <t t-if="!this.env.services.pos.config.hide_header">
+                <div class="d-flex" t-att-class="{ 'justify-content-between': !this.ui.isSmall }">
+                    <div>
+                        <div class="h4" t-esc="props.product.productDisplayName"/>
+                        <div t-if="this.props.product.is_storable" class="h4">
+                            <span>On hand: </span>
+                            <span t-if="this.fetchStock.status === 'success' || this.props.info">
+                                <t t-esc="this.state.available_quantity"/>
+                                Units
+                            </span>
+                            <span t-elif="this.fetchStock.status === 'error'">N/A</span>
+                            <i t-else="" class="fa fa-fw fa-spin fa-circle-o-notch" aria-hidden="true"/>
+                        </div>
+                    </div>
+                    <div t-att-class="{ 'text-end': !this.ui.isSmall }">
+                        <div class="h4"><t t-esc="this.env.utils.formatCurrency(state.price_with_tax)"/></div>
+                        <div class="h4">VAT: <t t-esc="state.tax_name || 0"/>
+                            (=<t t-esc="this.env.utils.formatCurrency(state.tax_amount)"/>)</div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>

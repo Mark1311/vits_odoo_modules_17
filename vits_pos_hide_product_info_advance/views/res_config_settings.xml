@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<odoo>
+    <record id="vits_pos_hide_product_info_advance_form_view" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.pos_order_type</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='restaurant_section']" position="after">
+                <block title="POS UI Visibility Controls">
+
+                    <setting string="Hide POS Header Section"
+                             help="Hide the complete header section in the POS interface for a cleaner layout.">
+                        <field name="hide_header"/>
+                    </setting>
+
+                    <setting string="Hide Inventory Section"
+                             help="Hide the Inventory section from the POS interface to restrict access.">
+                        <field name="hide_inventory"/>
+                    </setting>
+
+                    <setting string="Hide Replenishment Section"
+                             help="Hide the Replenishment section to limit operational options in POS.">
+                        <field name="hide_replenishment"/>
+                    </setting>
+
+                    <setting string="Hide Financial Section"
+                             help="Hide the Financial section in POS to prevent unauthorized financial access.">
+                        <field name="hide_financial"/>
+                    </setting>
+
+                    <setting string="Hide Orders Section"
+                             help="Hide the Orders section from POS to restrict order history visibility.">
+                        <field name="hide_order"/>
+                    </setting>
+
+                    <setting string="Hide Order Edit Button"
+                             help="Hide the Edit Order button in POS to avoid unwanted modifications.">
+                        <field name="hide_edit_button"/>
+                    </setting>
+
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

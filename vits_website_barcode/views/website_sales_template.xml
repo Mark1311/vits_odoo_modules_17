@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Author      : Varanval IT Solutions
+    Copyright   : (c) 2025 Varanval IT Solutions. All Rights Reserved.
+    License     : Odoo Proprietary License v1.0 (OPL-1)
+-->
+<odoo>
+    <template id="product_template_page" inherit_id="website_sale.product">
+        <xpath expr="//h1[@itemprop='name']" position="after">
+            <t t-if="request.env['ir.config_parameter'].sudo().get_param('website.show_product_barcode') == 'True'">
+                <div id="variant_barcode"
+                     class="text-muted"
+                     style="font-size:16px; margin-top:4px;">
+                    <t t-esc="product.product_variant_id.barcode"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>
+
+
+

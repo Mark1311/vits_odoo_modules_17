@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates id="vits_pos_change_logo.ReceiptHeader" xml:space="preserve">
+    <t t-name="vits_pos_change_logo.ReceiptHeader"
+       t-inherit="point_of_sale.ReceiptHeader"
+       t-inherit-mode="extension"
+       owl="1">
+        <xpath expr="//img[contains(@class, 'pos-receipt-logo')]" position="replace">
+            <t t-if="this.pos.receipt_logo">
+                <img t-att-src="'data:image/png;base64,' + this.pos.receipt_logo"
+                     class="pos-receipt-logo"
+                     style="max-height: 100px; max-width: 100%; margin-bottom: 5px;"
+                     alt="Custom POS Logo"/>
+            </t>
+            <t t-else="">
+                <img t-attf-src="/web/image?model=res.company&amp;id={{props.data.company.id}}&amp;field=logo"
+                     class="pos-receipt-logo"
+                     alt="Default Company Logo"/>
+            </t>
+        </xpath>
+    </t>
+</templates>
